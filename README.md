@@ -14,8 +14,8 @@ Neste repositório estão todoas as atividades, desafios e api's realizadas na m
 ## ***Professor***
 Rogério Silva
 
--[Github](https://github.com/rogeriosilva-ifpi)
+[Github](https://github.com/rogeriosilva-ifpi)
 ## ***Aluno***
 Kaio Gabriel
 
--[Github](https://github.com/KaioGabriel-the/)
+[Github](https://github.com/KaioGabriel-the/)
