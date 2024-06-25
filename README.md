@@ -1,4 +1,4 @@
-
+![imagem](https://github.com/KaioGabriel-the/Algoritmo/blob/1008d3c4b56bf6f0fda130363e8138b31e36306f/imagem.gif)
 
 
  # ***QUESTÕES DA MATÉRIA DE ALGORITIMO***
