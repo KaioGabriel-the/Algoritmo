@@ -167,8 +167,9 @@ def alfabeto(line):
 
     for letter in line:
 
-        if not (ord(letra_anterior) == ord(letter - 1)) or (ord(letter) == ord(letter)):
+        if not (ord(letra_anterior) == ord(letter - 1)) or (ord(letter) == ord(letra_anterior)):
             ordem = False
+            break
         
         letra_anterior = letter
 
@@ -176,7 +177,7 @@ def alfabeto(line):
 
 def palavras_alfabetica(fin):
 
-    palavras = 1
+    palavras = 0
     for line in fin:
         if alfabeto(line):
             palavras += 1
