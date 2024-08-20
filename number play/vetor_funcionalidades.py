@@ -1,0 +1,1 @@
+#Arquivo responsável pelas funcionalidades que seram chamadas na vetor app
