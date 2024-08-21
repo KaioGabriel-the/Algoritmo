@@ -1,6 +1,6 @@
 #Arquivo principal
 
-#Iportação da vetor funcionalidades
+#Importação da vetor funcionalidades
 import vetor_funcionalidades as utils_vector
 #Importação da utils
 import utils as input_data
@@ -16,7 +16,7 @@ def filter002(vector):
 
     while opction != 0 and opction <= 14:
 
-        #Responsável por mostrar os dados da lista
+        #Responsável por mostrar os dados do vetor
         if opction == 1:
             current_vector = utils_vector.vector_show(current_vector)
 
@@ -30,16 +30,51 @@ def filter002(vector):
             input_data.menu_vector()
 
             opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
-        #Reponsável por dizer a quantidade de elementos
+        #Reponsável por dizer a quantidade de elementos do vetor
         elif opction == 3:
             current_vector = utils_vector.vector_amount(current_vector)
 
             input_data.menu_vector()
 
             opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
-        #Responsável por mostrar o menor e o maior valor e suas respectiva posições
+        #Responsável por mostrar o menor e o maior valor e suas respectiva posições do vetor
         elif opction == 4:
-            pass
+            current_vector = utils_vector.smaller_bigger(current_vector)
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+        #Responável por somar todos os elementos dos vetor
+        elif opction == 5:
+            current_vector = utils_vector.sum(current_vector)
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14) 
+        #Responsável por fazer a média dos elementos do vetor
+        elif opction == 6:
+            current_vector = utils_vector.average(current_vector)
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+        #Responsável por pegar todos os números positivos e a quantidades no vetor
+        elif opction == 7:
+            current_vector = utils_vector.positive_negative(current_vector,"p")
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+        #Responsável por pegar todos os números negativos e a quantidade no vetor
+        elif opction == 8:
+            current_vector = utils_vector.positive_negative(current_vector,"n")
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+
+        
+
 #Função responsavel dizer qual o tipo de vetor
 def filter001(option):
 
@@ -63,6 +98,7 @@ def filter001(option):
         vector = input_data.file_scanner(fin)
         return vector
 
+#Função principais
 def main():
 
     opction = input_data.menu()

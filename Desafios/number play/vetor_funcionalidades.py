@@ -10,8 +10,9 @@ def vector_show(vector):
 
 #Mostrar a quantidade de valores no vetor
 def vector_amount(vector):
-
-    return utils.size(vector)
+    
+    result = f'''A QUANTIDADE DE ELEMENTOS É {utils.size(vector)}'''
+    return result
 
 #Resetar o vetor e padroniza todos os elementos
 def reset_vector(vector):
@@ -28,5 +29,20 @@ def smaller_bigger(vector):
 
     print(result)
 
-def sum_elements(vector):
-    pass
+#Retorna a soma de todos os elementos do vetor
+def sum(vector):
+    
+    result = f'''A SOMA DOS ELEMENTOS DO VETOR É {utils.sum_element(vector)}'''
+
+    return result
+
+#Retorna a média dos elementos do vetor
+def average(vector):
+
+    result = f'''A MÉDIA ENTRE OS VALORES É {utils.average_vector(vector)}'''
+
+    return result
+
+#Retorna todos os numeros positivos e a quantidade que o vetor possui
+def positive_negative(vector,string):
+    return utils.numbers_positive(vector,string)

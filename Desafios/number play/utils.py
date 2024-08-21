@@ -2,7 +2,18 @@ import random
 
 #Arquivo responsável por entrada e saida de dados
 
-#Menu_responsavel pelas funcionalidades dos vetores
+def menu_rules():
+
+    opctions = f''' ---> MENU(REGRAS) <--- \n
+    1- MULTIPLICAR TODOS OS ELEMENTOS
+    2- ELEVAR TODOS OS ELEMENTOS
+    3- REDUZIR A UMA FRAÇÃO TODOS OS ELEMENTOS
+    4- SUBSTITUIR OS VALORES NEGATIVOS POR UM NÚMERO ALEATORIO 
+    5- ORDENAR VALORES 
+    6- EMBARALHAR VALORES
+    '''
+    print(opctions)
+#Menu_responsável pelas funcionalidades dos vetores
 def menu_vector():
 
     opctions = f''' ---> MENU(VETOR) <--- \n
@@ -82,13 +93,10 @@ def input_split(text):
 
     new_data = []
 
-    if int(data[0]) > 0 and int(data[1]) > int(data[0]):
+    if int(data[1]) > int(data[0]):
         for i in data:
             new = int(i)
             new_data.append(new)
-    elif int(data[0]) < 0:
-        print(f'MINIMO MENOR QUE 0')
-        input_split("DIGITE NOVAMENTE: ")
     elif int(data[1]) < int(data[0]):
         print(f'MAXIMO MENOR QUE O MINIMO')
         input_split("DIGITE NOVAMENTE: ")
