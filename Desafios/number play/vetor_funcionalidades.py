@@ -45,4 +45,45 @@ def average(vector):
 
 #Retorna todos os numeros positivos e a quantidade que o vetor possui
 def positive_negative(vector,string):
-    return utils.numbers_positive(vector,string)
+    return utils.numbers_positive_negative(vector,string)
+
+#Retorna todos os valores do vetor multiplicados por um valor
+def mult(vector):
+
+    number = utils_data.input_manual("Digite o número: ",0,10*10)
+    new_vector = utils.mult_numbers(vector,number)
+
+    return new_vector
+
+#Retorna todos os elementos do vetor elevados a um valor
+def pon(vector):
+
+    number = utils_data.input_manual("Digite o número: ",0,10*10)
+    new_vector = utils.pon_numbers(vector,number)
+
+    return new_vector
+
+#Retorna todos os elementos transformados por uma fração
+def frac(vector):
+
+    number = (str(input("Digite a fração(1/2): "))).split("/")
+    new_vector = utils.fra_numbers(vector,number)
+
+    return new_vector
+
+#Substitui todos os valores negativos do vetor
+def subst_negative(vector):
+
+    number = utils_data.input_split("Digite o minimo e o maximo(,): ")
+    new_vector = utils.sub_negative(vector,number)
+
+    return new_vector
+
+#Ordenar os números do menor para o maior
+def ord_vector(vector):
+
+    new_vector = utils.ord_numbers(vector)
+
+    return new_vector
+
+#Embaralharar os elementos

@@ -1,3 +1,5 @@
+import random
+
 #Arquivo reponsável pelas funcionalidades de de vetor_funcinalidades 
 
 #Vai imprimir todos os elementos da lista 
@@ -80,3 +82,74 @@ def numbers_positive_negative(vector,string):
     elif string == "n" :
         result = f'''{print_vector(list_negative)} /n - A QUANTIDADE DE NÚMEROS POSITIVOS É {qtd_negative}'''
         print(result)
+
+#Irá multiplicar todos os números do vetor por um valor
+def mult_numbers(vector,num):
+
+    new_vector = []
+
+    for i in vector:
+
+        new_element = i * num
+        new_vector.append(new_element)
+
+    return new_vector
+
+#Irá elevar todos os números do vetor a um valor
+def pon_numbers(vector,num):
+
+    new_vector = []
+
+    for i in vector:
+
+        new_element = i ** num
+        new_vector.append(new_element)
+
+    return new_vector
+
+#Irá receber uma fração e multiplicar pelo elemento
+def fra_numbers(vector,numbers):
+
+    new_vector = []
+    fraction = numbers[0] / numbers[1]
+
+    for i in vector:
+
+        new_element = round((i * fraction),2) 
+        new_vector.append(new_element)
+
+    return new_vector
+
+#Irá pegar todos os valores negativos e substituir aleatoriamente por valores de uma faixa
+def sub_negative(vector,min_max):
+
+    new_vector = []
+
+    for i in vector:
+
+        if i < 0:
+            new_element = random.randint(min_max[0],min_max[1])
+            new_vector.append(new_element)
+        else:
+            new_vector.append(i)
+
+    return new_vector
+
+#Irá ordenar o valor os valores da lista em forma crescente
+def ord_numbers(vector):
+    for i in range(len(vector)):
+        for r in range(len(vector) - 1):
+            if vector[r] > vector[r + 1]:
+                maior = vector[r]
+                vector[r] = vector[r + 1]
+                vector[r + 1] = maior
+    return vector
+
+#Irá embaralhar os valores
+def shuffle_numbers(vector):
+
+    for i in range(len(vector)):
+
+        vector[random.randint(0,len(vector)-1)] = vector[i]
+
+    return vector
