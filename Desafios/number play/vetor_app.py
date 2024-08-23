@@ -5,6 +5,33 @@ import vetor_funcionalidades as utils_vector
 #Importação da utils
 import utils as input_data
 
+#Funçaõ responsável por chamar as operações com map aos elementos do vetor
+def filter003(vector,op):
+
+    #Multiplicar
+    if op == 1:
+
+        return utils_vector.mult(vector)
+    #Elevar
+    elif op == 2:
+
+        return utils_vector.pon(vector)
+    #Fração
+    elif op == 3:
+
+        return utils_vector.frac(vector)
+    #Substituir os negativos
+    elif op == 4:
+
+        return utils_vector.subst_negative(vector)
+    #Ordenar os números de forma crescente
+    elif op == 5:
+
+        return utils_vector.ord_vector(vector)
+    #Embaralhar valores
+    elif op == 6:
+        return utils_vector.shuffle(vector)
+
 #Função respnsavel por chamar as funcionalidades dos vetores
 def filter002(vector):
 
@@ -14,8 +41,9 @@ def filter002(vector):
 
     current_vector = vector
 
-    while opction != 0 and opction <= 14:
+    while opction < 0 and opction <= 14:
 
+        
         #Responsável por mostrar os dados do vetor
         if opction == 1:
             current_vector = utils_vector.vector_show(current_vector)
@@ -72,9 +100,55 @@ def filter002(vector):
             input_data.menu_vector()
 
             opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+        #Responsável por fazer uma operação com os elemetos do vetores
+        elif opction == 9:
+            input_data.menu_rules
 
+            op = input_data.input_manual("Digite a sua opção: ",1,6)
+            current_vector = filter003(current_vector,op)
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+        #Adicioanr novos valores ao vetor 
+        elif opction == 10:
+            current_vector = utils_vector.add(current_vector)
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+        #Removerá elementos do vetor por valores
+        elif opction == 11:
+            current_vector = utils_vector.remove(current_vector)
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+        #Removerá elementos por posição
+        elif opction == 12:
+            current_vector = utils_vector.remove_index(current_vector)
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+        #Editar valores dos elementos do vetor
+        elif opction == 13:
+            current_vector = utils_vector.edit(current_vector)
+
+            input_data.menu_vector()
+
+            opction = input_data.input_manual("Digite qual opção deseja: ",0,14)
+        elif opction == 14:
+            name_file = str(input("Digite o nome do arquivo: "))
+
+            file = utils_vector.create_file(vector,name_file)
+
+            print(f"Arquivo criado com sucesso!!!")
+
+            return file
+    
+    utils_vector.create_file(vector,name="arquivo")
         
-
 #Função responsavel dizer qual o tipo de vetor
 def filter001(option):
 

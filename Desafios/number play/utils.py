@@ -2,6 +2,7 @@ import random
 
 #Arquivo responsável por entrada e saida de dados
 
+#Menu responsável pelos maps que os elementos dos vetores
 def menu_rules():
 
     opctions = f''' ---> MENU(REGRAS) <--- \n
@@ -9,7 +10,7 @@ def menu_rules():
     2- ELEVAR TODOS OS ELEMENTOS
     3- REDUZIR A UMA FRAÇÃO TODOS OS ELEMENTOS
     4- SUBSTITUIR OS VALORES NEGATIVOS POR UM NÚMERO ALEATORIO 
-    5- ORDENAR VALORES 
+    5- ORDENAR VALORES DE FORMA CRESCENTE
     6- EMBARALHAR VALORES
     '''
     print(opctions)
@@ -31,7 +32,7 @@ def menu_vector():
     12- REMOVER POR POSIÇÃO;
     13- EDITAR ITEM POR POSIÇÃO;
     14- SALVAR VALORES EM UM ARQUIVO;
-    0 - SAIR;
+    0 - SAIR(SALVAMENTO AUTOMÁTICO);
     '''
     print(opctions)
 
@@ -45,7 +46,7 @@ def menu():
 
     print(options)
 
-    option = input_manual("Digite qual opção deseja: ",1,3)
+    option = input_manual("Digite qual opção deseja: ",0,3)
     
     return option
 
@@ -82,9 +83,17 @@ def get_random_number(min_max):
 #Leitor de arquivos
 def file_scanner(name_file):
 
-    fin = open(name_file)
+    new_vector = []
 
-    return fin
+    with open(name_file,"r") as arquivo:
+
+        linhas = arquivo.readline()
+    
+    for i in linhas:
+
+        new_vector.append(int(i.strip()))
+    
+    return new_vector
 
 #Pegar o min. e max.
 def input_split(text):

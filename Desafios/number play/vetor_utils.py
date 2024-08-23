@@ -1,3 +1,4 @@
+import utils as utils
 import random
 
 #Arquivo reponsável pelas funcionalidades de de vetor_funcinalidades 
@@ -18,12 +19,11 @@ def size(vector):
     return len(vector)
 
 #Vai resetar o vetor e padronizar os elementos
-def patterning_vector(vector,number):
+def patterning_vector(vector):
 
     vector_zero = [0] * size(vector)
-    new_vector = [number] * size(vector_zero)
 
-    return new_vector
+    return vector_zero
 
 #Retorna o menor e o maior lavor da lista e suas posicões
 def position(vector):
@@ -151,5 +151,61 @@ def shuffle_numbers(vector):
     for i in range(len(vector)):
 
         vector[random.randint(0,len(vector)-1)] = vector[i]
+
+    return vector
+
+#Irá adicionar novos valores ao vetor
+def add_numbers(vector):
+
+    qtd = utils.input_manual("Digite a quantidade de elementos que deseja remover: ",0,10*10)
+
+    for i in range(qtd):
+
+        number = utils.input_manual("Qual o novo elemento que deseja adicionar no vetor: ",-10**11,10**10)
+
+        vector.append(number)
+
+    return vector
+
+#Irá remover elementos do vetor por valor exato
+def e_rem_numbers(vector):
+
+    print_vector(vector)
+
+    qtd = utils.input_manual("Digite a quantidade de elementos que deseja remover: ",0,10*10)
+
+    for i in range(qtd):
+
+        element = int(input("Qual o elemento: "))
+
+        vector.remove(element)
+
+    return vector
+
+#Irá remover elementos por indices 
+def i_rem_numbers(vector):
+
+    print_vector(vector)
+
+    qtd = utils.input_manual("Digite a quantidade de elementos que deseja remover: ",0,10*10)
+
+    for i in range(qtd):
+
+        element = int(input("Qual a posição do elemento: "))
+
+        vector.pop(element)
+
+    return vector
+
+#Irá editar valor especifico
+def edit_numbers(vector):
+
+    print_vector(vector)
+
+    element = int(input("Qual o indice do elemento: "))
+
+    new_element = utils.input_manual("Digite o novo elemento: ",-10**11,10**10)
+
+    vector[element] = new_element
 
     return vector

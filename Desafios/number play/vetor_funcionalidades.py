@@ -19,7 +19,7 @@ def reset_vector(vector):
 
     number = utils_data.input_manual("Digite o valor padrão da lista: ",0,10*10)
     
-    return utils.patterning_vector(vector,number)
+    return utils.patterning_vector(vector)
 
 #Retornará um maior e menor valor do vetor e suas posições
 def smaller_bigger(vector):
@@ -87,3 +87,38 @@ def ord_vector(vector):
     return new_vector
 
 #Embaralharar os elementos
+def shuffle(vector):
+
+    new_vector = utils.shuffle_numbers(vector)
+
+    return new_vector
+
+#Adicionar novos valores ao vetor
+def add(vector):
+
+    utils.add_numbers(vector)
+
+#Removerá elementos do vetor atraveis do valor exato
+def remove(vector):
+
+    return utils.e_rem_numbers_rem_numbers(vector)
+
+#Removerá os elementos do vetores por indice
+def remove_index(vector):
+    
+    return utils.i_rem_numbers(vector)
+
+#Editar elementos
+def edit(vector):
+
+    return utils.edit_numbers(vector)
+
+#Criar arquivo com os elementos do vetor
+def create_file(vector,name):
+
+    file = f"{name}.txt"
+
+    with open(file,'w') as arquivo:
+
+        for numbers in vector:
+            arquivo.write(f"{numbers}\n")
