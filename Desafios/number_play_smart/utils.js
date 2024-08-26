@@ -1,9 +1,7 @@
 import {question} from 'readline-sync'
 
 export function input(text,min,max){
-
     const data = Number(question(text));
-
     const dado_filtrado = (data,min,max) => {if (min_max(data,min,max)){return data}else{input("Digite novamente: ",min,max)}};
 
     return dado_filtrado(data,min,max);
@@ -17,9 +15,7 @@ function print(text){
 
 //Finção responsável por mostrar o menu dos vetores e retorna uma opção;
 export function menu_dados(){
-
     const opctions = " ----- MENU(DADOS) ----- \n 1- CRIAR VETOR AUTOMÁTICO; \n 2- INFORMA DADOS AO VETOR; \n 3- CRIAR VETOR COM UM ARQUIVO;"
-
     print(opctions);
 
     return input("Digite qual opção deseja: ",1,3);
@@ -41,7 +37,7 @@ export function girar_menu(opction){
     while ((opction,min,max) => {if (min_max(data,min,max)){return data}else{input("Digite novamente: ",min,max)}}){
 
         if (opction === 1){
-            
+
         }else if(opction === 2){
 
             let opction = menu_princial()

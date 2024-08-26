@@ -4,7 +4,6 @@ import random
 
 #Menu responsável pelos maps que os elementos dos vetores
 def menu_rules():
-
     opctions = f''' ---> MENU(REGRAS) <--- \n
     1- MULTIPLICAR TODOS OS ELEMENTOS
     2- ELEVAR TODOS OS ELEMENTOS
@@ -14,9 +13,9 @@ def menu_rules():
     6- EMBARALHAR VALORES
     '''
     print(opctions)
+
 #Menu_responsável pelas funcionalidades dos vetores
 def menu_vector():
-
     opctions = f''' ---> MENU(VETOR) <--- \n
     1- MOSTRAR DOS OS ELEMENTOS DO VETOR;
     2- RESETAR O VETOR E PADRONIZAR COM UM VALOR;
@@ -38,26 +37,23 @@ def menu_vector():
 
 #Menu responsável pela criação da lista
 def menu():
-
     options = f"""  ----- MENU(DADOS) ----- \n
     1- CRIAR VETOR AUTOMÁTICO;
     2- INFORMA DADOS AO VETOR;
     3- CRIAR VETOR COM UM ARQUIVO; \n"""
-
     print(options)
 
-    option = input_manual("Digite qual opção deseja: ",0,3)
-    
+    option = number_min_max("Digite qual opção deseja: ",0,3)
+
     return option
 
 #Criando vetor manualmente
 def building_vector(size,min_max):
-    
     new_vector = []
 
     for i in range(size):
 
-        element = input_manual("Digite o elemento do vetor: ",0,10*10)
+        element = number_min_max("Digite o elemento do vetor: ",0,10*10)
 
         if element >= (min_max[0]) and element <= (min_max[1]):
             new_vector.append(element)
@@ -68,7 +64,6 @@ def building_vector(size,min_max):
 
 #Criando vetor automático
 def automstic_vector(size,min_max):
-
     new_list = []
 
     for i in range(size):
@@ -77,29 +72,27 @@ def automstic_vector(size,min_max):
 
     return new_list
 
+
 def get_random_number(min_max):
     return random.randint((min_max[0]),(min_max[1]))
 
 #Leitor de arquivos
 def file_scanner(name_file):
-
     new_vector = []
 
     with open(name_file,"r") as arquivo:
 
         linhas = arquivo.readline()
-    
+
     for i in linhas:
 
         new_vector.append(int(i.strip()))
-    
+
     return new_vector
 
 #Pegar o min. e max.
 def input_split(text):
-
     data = (input(text)).split(",")
-
     new_data = []
 
     if int(data[1]) > int(data[0]):
@@ -114,24 +107,24 @@ def input_split(text):
         input_split("DIGITE NOVAMENTE: ")
 
     return new_data
-               
-def input_manual(text,min,mxm):
 
+
+def number_min_max(text,min,mxm):
     data = int(input(text))
 
     if data > min and data <= mxm:
         return data
     else:
-        return input_manual(text,min,mxm)
-    
-def input_string(text):
+        return number_min_max(text,min,mxm)
 
+
+def input_string(text):
     string = str(input(text))
 
     return string
 
-def enter():
 
+def enter():
     press = input("Precione o enter...")
 
     return
