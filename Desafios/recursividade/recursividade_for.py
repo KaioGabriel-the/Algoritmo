@@ -1,3 +1,10 @@
+def fatorial(entrada):
+    result = 1
+
+    for i in range(entrada):
+        result = result * entrada - i
+
+
 def main():
     menu = f"""----- MENU -----
     1- FATORIAL
@@ -12,6 +19,10 @@ def main():
     data = list(map(int,input("Digite a opção: ").split(" ")))
 
     while data[0] != 0:
+        if data[0] == 1:
+            entrada = int(input("Digite fatorial: "))
+            result = fatorial(entrada)
+            print(f"""> O fatorial é {result}""")
         data = list(map(int,input("Digite a opção: ").split(" ")))
 
 
