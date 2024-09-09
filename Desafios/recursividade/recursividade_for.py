@@ -149,7 +149,6 @@ def main():
             result_Soma = soma_aleatoria(entrada,min_max)
             print(result_Soma)
             gravar_Arquivo(name_File, [result_Soma])
-
         elif data[0] == 7:
             entrada = str(input("Digite a frase: ")).split(" ")
             result_Vogais_consoante = contar_Vogais_consoantes(entrada)
