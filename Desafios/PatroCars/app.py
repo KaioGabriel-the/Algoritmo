@@ -18,6 +18,7 @@ def main():
             utils.clear()
             print(menu)
             entrada = utils.entrada("Digite sua opção: ")
+            utils.clear()
         elif entrada == 2:
             pass
         elif entrada == 3:

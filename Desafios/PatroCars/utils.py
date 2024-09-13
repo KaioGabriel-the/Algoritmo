@@ -2,6 +2,30 @@ import bancoDados as bancoDados
 import os
 
 
+def bubbleSort(lista,ordem,variavel):
+    tamanhoLista = len(lista)
+
+    for i in range(tamanhoLista):
+        for j in range(0,tamanhoLista-i-1):
+            if ordem == "A":
+                if lista[j][variavel] > lista[j+1][variavel]:
+                    lista[j], lista[j+1] = lista[j+1], lista[j]
+            elif ordem == "D":
+                if lista[j][variavel] < lista[j+1][variavel]:
+                    lista[j], lista[j+1] = lista[j+1], lista[j]
+
+    return lista
+
+#Função responsável por ordenar os dados
+def ordenando(modo,func,ordem,listar):
+    return func(listar,ordem,modo)
+    
+    
+#Função responsável por apenas receber um input
+def enter():
+    return input("APERTE ENTER PARA CONTINUAR...")
+
+#Função responsável por limpar a tela
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -11,17 +35,38 @@ def entrada(text):
     dado = list(map(int,input(text).split(" ")))
     return dado[0]
 
-def opcoes_Motadora(data):
-    if data == 1:
-        name = str(input("Digite o nome da montadora: "))
-        paises = str(input("Digite o país da montadora: "))
-        ano_Fundacao = int(input('Digite o ano de fundação: '))
-        clear()
-        print(f'Dado computado...')
-        data = menu_Montadora()
-    else:
-        print(0)
 
+def key(modo):
+    if modo == 1:
+        return "nome"
+    elif modo == 2:
+        return "pais"
+    elif modo == 3:
+        return "anofundacao"
+
+
+def opcoes_Motadora(data):
+    #Cadastrando os dados das montadoras
+    if data == 1:
+        id = 0
+        name = str(input("Digite o nome da montadora: "))
+        pais= str(input("Digite o país da montadora: "))
+        ano_Fundacao = int(input('Digite o ano de fundação: '))
+        bancoDados.dadosMontadora([id,name,pais,ano_Fundacao],bancoDados.montadoras)
+        clear()
+        enter()
+        clear()
+        data = menu_Montadora()
+        clear()
+    elif data == 2: #Listando as montadoras
+        modo = subMenuMontadoralistar()
+        ordem = str(input("Qual a forma qur você deseja listar as montadoras(A- Cresente, D- Decrecente): ")).upper()
+        elementos_ordenados = ordenando(key(modo),bubbleSort,ordem,bancoDados.montadoras)
+        print(elementos_ordenados)
+        enter()
+        clear()
+        data = menu_Montadora()
+        clear()
 
 def menu_Montadora():
     menuMontadora = f''' ----- MENU(MONTADORA) -----
@@ -33,5 +78,17 @@ def menu_Montadora():
     0- Sair \n'''
     print(menuMontadora)
     opcao = entrada("Digite qual opção que deseja: ")
+    clear()
+
+    return opcao
+
+
+def subMenuMontadoralistar():
+    menu = f''' ----- MENU(FILTRAR) -----
+    [1] - Nome
+    [2] - País
+    [3] - Ano de fundação\n'''
+    print(menu)
+    opcao = int(input("Qual modo você deseja listar as montadoras: "))
 
     return opcao
