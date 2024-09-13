@@ -1,6 +1,13 @@
 import bancoDados as bancoDados
 import os
 
+def showListar(lista):
+    for i in range(len(lista)):
+        print(f'''[{i}] ID: {lista[i]["id"]}
+NOME: {lista[i]["nome"]}
+PAÍS: {lista[i]["pais"]}
+ANO DE FUNDAÇÃO: {lista[i]["anofundacao"]}\n''')
+        
 
 def bubbleSort(lista,ordem,variavel):
     tamanhoLista = len(lista)
@@ -19,8 +26,7 @@ def bubbleSort(lista,ordem,variavel):
 #Função responsável por ordenar os dados
 def ordenando(modo,func,ordem,listar):
     return func(listar,ordem,modo)
-    
-    
+      
 #Função responsável por apenas receber um input
 def enter():
     return input("APERTE ENTER PARA CONTINUAR...")
@@ -46,27 +52,39 @@ def key(modo):
 
 
 def opcoes_Motadora(data):
-    #Cadastrando os dados das montadoras
-    if data == 1:
-        id = 0
-        name = str(input("Digite o nome da montadora: "))
-        pais= str(input("Digite o país da montadora: "))
-        ano_Fundacao = int(input('Digite o ano de fundação: '))
-        bancoDados.dadosMontadora([id,name,pais,ano_Fundacao],bancoDados.montadoras)
-        clear()
-        enter()
-        clear()
+   
+   while data!= 0:
+        #Cadastrando os dados das montadoras
+        if data == 1:
+            id = 0
+            name = str(input("Digite o nome da montadora: "))
+            pais= str(input("Digite o país da montadora: "))
+            ano_Fundacao = int(input('Digite o ano de fundação: '))
+            bancoDados.dadosMontadora([id,name,pais,ano_Fundacao],bancoDados.montadoras)
+            clear()
+            enter()
+            clear()
+        elif data == 2: #Listando as montadoras
+            modo = subMenuMontadoralistar()
+            ordem = str(input("Qual a forma qur você deseja listar as montadoras(A- Cresente, D- Decrecente): ")).upper()
+            elementos_ordenados = ordenando(key(modo),bubbleSort,ordem,bancoDados.montadoras)
+            clear()
+            showListar(bancoDados.montadoras)
+            enter()
+            clear()
+        elif data == 3:#Atualizar dados existentes
+            showListar(bancoDados.montadoras)
+            opcao = int(in)
+        elif data == 4:#Remover valores da listar
+            pass
+        elif data == 5:#Filtrar itens da listar
+            pass
+        elif data == 6:#Mostrar quantos itens estão dentro da listar
+            qtdDados = len(bancoDados.montadoras)
+            print(f''' ----- QUANTIDADE DE MONTADORAS -----
+                  {qtdDados}''')
         data = menu_Montadora()
-        clear()
-    elif data == 2: #Listando as montadoras
-        modo = subMenuMontadoralistar()
-        ordem = str(input("Qual a forma qur você deseja listar as montadoras(A- Cresente, D- Decrecente): ")).upper()
-        elementos_ordenados = ordenando(key(modo),bubbleSort,ordem,bancoDados.montadoras)
-        print(elementos_ordenados)
-        enter()
-        clear()
-        data = menu_Montadora()
-        clear()
+          
 
 def menu_Montadora():
     menuMontadora = f''' ----- MENU(MONTADORA) -----
@@ -75,6 +93,7 @@ def menu_Montadora():
     3- Atualizar
     4- Remover
     5- Filtrar
+    6- Status
     0- Sair \n'''
     print(menuMontadora)
     opcao = entrada("Digite qual opção que deseja: ")
