@@ -76,13 +76,13 @@ def opcoes_Motadora(data):
             showListar(bancoDados.montadoras)
             opcao = int(in)
         elif data == 4:#Remover valores da listar
-            pass
+            showListar(bancoDados.montadoras)
         elif data == 5:#Filtrar itens da listar
             pass
         elif data == 6:#Mostrar quantos itens estão dentro da listar
             qtdDados = len(bancoDados.montadoras)
             print(f''' ----- QUANTIDADE DE MONTADORAS -----
-                  {qtdDados}''')
+                  MONTADORAS: {qtdDados}''')
         data = menu_Montadora()
           
 
