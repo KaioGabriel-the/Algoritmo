@@ -1,5 +1,5 @@
 import utils as utils
-
+import modelosUtils as modeloUtils
 
 def main():
     menu = f''' ----- MENU ----- 
@@ -20,7 +20,13 @@ def main():
             entrada = utils.entrada("Digite sua opção: ")
             utils.clear()
         elif entrada == 2:
-            pass
+            opcao = modeloUtils.menuModelos()
+            utils.clear()
+            modeloUtils.opcoesModelos(opcao)
+            utils.clear()
+            print(menu)
+            entrada = utils.entrada("Digite sua opção: ")
+            utils.clear()
         elif entrada == 3:
             pass
 
