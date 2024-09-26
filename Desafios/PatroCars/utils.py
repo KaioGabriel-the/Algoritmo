@@ -1,9 +1,58 @@
+from ulid import ULID
 import bancoDados as bancoDados
 import os
 
+
+def showListFilter(itens,data):
+     for i in itens:
+        print(f'''INDEX:[{i}] \nID: {data[i]["id"]}
+NOME: {data[i]["nome"]}
+PAÍS: {data[i]["pais"]}
+ANO DE FUNDAÇÃO: {data[i]["anofundacao"]}\n''')
+        
+
+def isString(item,montadora):
+    verificacao = True
+    for i in range(len(item)):
+        if not(item[i] == montadora[i]):
+            verificacao = False
+
+    return verificacao
+        
+
+def filtro(item,key,array):
+    data = array
+    newData = []
+    for i in range(len(data)):
+        if isString(item,data[i][key]):
+            newData.append(i)
+
+    return newData
+
+
+def remove(index):
+    montadoras = bancoDados.montadoras
+    montadoras.pop(index)
+
+
+def alteration(index):
+    attribute = key(subMenuMontadoralistar())
+    montadora = bancoDados.montadoras[index]
+
+    if attribute == "nome":
+        newName = input("Qual o novo nome da montadora: ")
+        montadora[attribute] = newName
+    elif attribute == "pais":
+        newCountry = input("Qual o novo país da montadora: ")
+        montadora[attribute] = newCountry
+    elif attribute == "anofundacao":
+        newYear = int(input("Digite o ano de fundação atualizado: "))
+        montadora[attribute] = newYear
+
+
 def showListar(lista):
     for i in range(len(lista)):
-        print(f'''[{i}] ID: {lista[i]["id"]}
+        print(f'''INDEX:[{i}] \nID: {lista[i]["id"]}
 NOME: {lista[i]["nome"]}
 PAÍS: {lista[i]["pais"]}
 ANO DE FUNDAÇÃO: {lista[i]["anofundacao"]}\n''')
@@ -56,7 +105,7 @@ def opcoes_Motadora(data):
    while data!= 0:
         #Cadastrando os dados das montadoras
         if data == 1:
-            id = 0
+            id = ULID()
             name = str(input("Digite o nome da montadora: "))
             pais= str(input("Digite o país da montadora: "))
             ano_Fundacao = int(input('Digite o ano de fundação: '))
@@ -74,15 +123,32 @@ def opcoes_Motadora(data):
             clear()
         elif data == 3:#Atualizar dados existentes
             showListar(bancoDados.montadoras)
-            opcao = int(in)
+            opcao = int(input("Digite o index da montadora que você deseja alterar: "))
+            alteration(opcao)
+            clear()
+            enter()
+            clear()
         elif data == 4:#Remover valores da listar
             showListar(bancoDados.montadoras)
+            opcao = int(input("Digite o index da montadora que deseja remover: "))
+            remove(opcao)
+            clear()
+            print("Item removido da lista \n")
+            enter()
+            clear()
         elif data == 5:#Filtrar itens da listar
-            pass
+            keyData = key(subMenuMontadoralfilter())
+            pesquisar = input("Buscar: ")
+            filtrando = filtro(pesquisar,keyData,bancoDados.montadoras)
+            showListFilter(filtrando,bancoDados.montadoras)
+            enter()
+            clear()
         elif data == 6:#Mostrar quantos itens estão dentro da listar
             qtdDados = len(bancoDados.montadoras)
             print(f''' ----- QUANTIDADE DE MONTADORAS -----
-                  MONTADORAS: {qtdDados}''')
+                  MONTADORAS: {qtdDados} \n''')
+            enter()
+            clear()
         data = menu_Montadora()
           
 
@@ -107,6 +173,15 @@ def subMenuMontadoralistar():
     [1] - Nome
     [2] - País
     [3] - Ano de fundação\n'''
+    print(menu)
+    opcao = int(input("Qual modo você deseja listar as montadoras: "))
+
+    return opcao
+
+def subMenuMontadoralfilter():
+    menu = f''' ----- MENU(FILTRAR) -----
+    [1] - Nome
+    [2] - País \n'''
     print(menu)
     opcao = int(input("Qual modo você deseja listar as montadoras: "))
 
